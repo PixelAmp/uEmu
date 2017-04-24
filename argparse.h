@@ -5,7 +5,7 @@
 #define ARG_MAX 32
 
 #ifndef ARGPARSE_C
-extern char *args[ARG_MAX];
+extern char *const *args;
 #endif
 
 void parse_args(const char *line);

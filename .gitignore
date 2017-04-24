@@ -1,3 +1,6 @@
+# Compile options for irony-mode
+.clang_complete
+
 # Compiled Object files
 *.slo
 *.lo

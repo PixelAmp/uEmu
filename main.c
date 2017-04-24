@@ -43,11 +43,14 @@ int main() {
     } else {
       // We are the parent.
       bool wait_for_child;
-      for (const char *const *p = args; *p; ++p)
-        wait_for_child = 0 != strcmp("&", *p);
+      for (char *const *p = args; *p; ++p)
+        wait_for_child = strcmp("&", *p);
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
       if (wait_for_child)
         wait(NULL);
+#pragma GCC diagnostic pop
     }
   }
 
