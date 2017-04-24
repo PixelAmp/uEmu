@@ -7,6 +7,7 @@ Raul P.
 
 
 >>gitHub through your command line 
+GOOGLE DOC https://docs.google.com/document/d/1yFRHDygp2RWzFez8GtN5aQ-RMqThS4uU7JtVWVT3Y2E/edit?usp=sharing
 git 
 git init				
 git clone https;//github.com/UserId/fileNam
