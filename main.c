@@ -27,6 +27,13 @@ int main() {
     if (*args == NULL)
       continue;
 
+    if (!strcmp(*args, "cd")) {
+      if (args[1])
+        if (chdir(args[1]))
+          printf("Unable to change directory.\n%m\n");
+      continue;
+    }
+
     fflush(0);
     pid_t child = fork();
 
