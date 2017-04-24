@@ -78,11 +78,13 @@ void ui_free(struct ui *ui) {
 
 const char *ui_get_line(struct ui *ui, size_t *size) {
   const int i = ui->history_index & (HISTORY_SIZE - 1);
+  ssize_t s;
   do {
     printf("%s ", ui->prompt);
-    *size = getline(&ui->history[i], &ui->history_size[i], stdin);
-  } while (*size <= 1);
+    s = getline(&ui->history[i], &ui->history_size[i], stdin);
+  } while (s <= 1);
 
+  *size = s;
   hist_prev(ui, size);
   ui->history_index++;
 
