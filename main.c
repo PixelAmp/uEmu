@@ -13,8 +13,8 @@ int main(int argc, char **argv) {
 
     if (strcmp(line, "quit\n") == 0)
       break;
-
-    puts(line);
+    if(strcmp(line,"history\n") == 0)
+      ui_history(&ui);
   }
 
   ui_free(&ui);

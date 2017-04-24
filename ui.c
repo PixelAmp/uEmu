@@ -24,14 +24,22 @@ void ui_free(struct ui *ui) {
 }
 
 const char *ui_get_line(struct ui *ui, size_t *size) {
-  const int i = ui->history_index;
+  const int i = ui->history_index & (HISTORY_SIZE - 1);
   do {
     printf("%s ", ui->prompt);
     *size = getline(&ui->history[i], &ui->history_size[i], stdin);
   } while (ui->history[i][0] == 0);
 
   ui->history_index++;
-  ui->history_index &= HISTORY_SIZE - 1;
 
   return ui->history[i];
+}
+
+void ui_history(const struct ui *ui) {
+  for (int i = ui->history_index <= HISTORY_SIZE
+                   ? 0
+                   : ui->history_index - HISTORY_SIZE;
+       i != ui->history_index; i++) {
+    printf("%d\t%s", i, ui->history[i & (HISTORY_SIZE - 1)]);
+  }
 }
