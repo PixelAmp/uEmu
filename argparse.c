@@ -19,7 +19,4 @@ void parse_args(const char *line) {
 
   if (p == args + ARG_MAX)
     args[ARG_MAX - 1] = 0;
-
-  for(p = args;*p;++p)
-    puts(*p);
 }
