@@ -7,7 +7,7 @@
 #define MAX_LINE 4096
 
 char *args[ARG_MAX];
-char command[MAX_LINE + 1];
+static char command[MAX_LINE + 1];
 
 void parse_args(const char *line) {
   strncpy(command, line, MAX_LINE);
@@ -20,7 +20,6 @@ void parse_args(const char *line) {
   if (p == args + ARG_MAX)
     args[ARG_MAX - 1] = 0;
 
-  puts("args:");
-  for (p = args; *p; ++p)
+  for(p = args;*p;++p)
     puts(*p);
 }
