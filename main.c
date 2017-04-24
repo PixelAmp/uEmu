@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "argparse.h"
 #include "ui.h"
 
 int main(int argc, char **argv) {
@@ -17,6 +18,8 @@ int main(int argc, char **argv) {
       ui_history(&ui);
       continue;
     }
+
+    parse_args(line);
   }
 
   ui_free(&ui);
