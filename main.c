@@ -23,7 +23,7 @@ int main() {
       continue;
     }
 
-    parse_args(line);
+    char *const *args = parse_args(line);
     if (*args == NULL)
       continue;
 

@@ -5,11 +5,12 @@
 #include <string.h>
 
 #define MAX_LINE 4096
+#define ARG_MAX 32
 
-char *args[ARG_MAX];
-static char command[MAX_LINE + 1];
+char *const *parse_args(const char *line) {
+  static char command[MAX_LINE + 1];
+  static char *args[ARG_MAX];
 
-void parse_args(const char *line) {
   strncpy(command, line, MAX_LINE);
   char **p = args;
 
@@ -19,4 +20,6 @@ void parse_args(const char *line) {
 
   if (p == args + ARG_MAX)
     args[ARG_MAX - 1] = 0;
+
+  return args;
 }
