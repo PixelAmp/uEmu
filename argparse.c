@@ -10,6 +10,7 @@
 char *const *parse_args(const char *line) {
   static char command[MAX_LINE + 1];
   static char *args[ARG_MAX];
+  command[MAX_LINE] = 0;
 
   strncpy(command, line, MAX_LINE);
   char **p = args;
