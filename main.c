@@ -28,9 +28,13 @@ int main() {
       continue;
 
     if (!strcmp(*args, "cd")) {
-      if (args[1])
+      if (args[1]) {
         if (chdir(args[1]))
           printf("Unable to change directory.\n%m\n");
+      } else {
+        if (chdir(getenv("HOME")))
+          printf("Unable to change directory.\n%m\n");
+      }
       continue;
     }
 
