@@ -16,7 +16,7 @@ int main() {
     size_t size;
     const char *line = ui_get_line(&ui, &size);
 
-    if (strcmp(line, "quit\n") == 0)
+    if (strcmp(line, "quit\n") == 0 || strcmp(line, "exit\n") == 0)
       break;
     if (strcmp(line, "history\n") == 0) {
       ui_history(&ui);
