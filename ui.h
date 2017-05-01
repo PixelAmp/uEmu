@@ -1,4 +1,4 @@
-#pragmam once
+#pragma once
 #include <stddef.h>
 #define HISTORY_SIZE 16
 
