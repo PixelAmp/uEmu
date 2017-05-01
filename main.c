@@ -60,7 +60,8 @@ int main() {
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
       if (wait_for_child)
-        wait(NULL);
+        while (child != wait(NULL))
+          ;
 #pragma GCC diagnostic pop
     }
   }
