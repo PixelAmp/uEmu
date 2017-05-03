@@ -6,6 +6,11 @@
 #include <stdlib.h>
 #include <string.h>
 
+/*##################################################################################
+     PURPOSE: 
+  PARAMETERS:           
+      RETURN:               
+###################################################################################*/
 static void history_update(struct ui *ui, const int current, const int prev,
                            size_t *size) {
   if (ui->history[current] == NULL) {
@@ -19,6 +24,11 @@ static void history_update(struct ui *ui, const int current, const int prev,
   memcpy(ui->history[current], ui->history[prev], *size + 1);
 }
 
+/*##################################################################################
+     PURPOSE: 
+  PARAMETERS:           
+      RETURN:               
+###################################################################################*/
 static void ui_history_last(struct ui *ui, size_t *size) {
   if (ui->history_index == 0)
     return;
@@ -29,6 +39,11 @@ static void ui_history_last(struct ui *ui, size_t *size) {
   history_update(ui, current, prev, size);
 }
 
+/*##################################################################################
+     PURPOSE: 
+  PARAMETERS:           
+      RETURN:               
+###################################################################################*/
 static void hist_prev(struct ui *ui, size_t *size) {
   const int current = ui->history_index & (HISTORY_SIZE - 1);
   int prev = 0;
@@ -57,6 +72,11 @@ static void hist_prev(struct ui *ui, size_t *size) {
   history_update(ui, current, prev, size);
 }
 
+/*##################################################################################
+     PURPOSE: 
+  PARAMETERS:           
+      RETURN:               
+###################################################################################*/
 void ui_init(struct ui *ui, const char *prompt) {
   assert(__builtin_popcount(HISTORY_SIZE) == 1);
 
@@ -69,6 +89,11 @@ void ui_init(struct ui *ui, const char *prompt) {
     ui->history[i] = 0;
 }
 
+/*##################################################################################
+     PURPOSE: 
+  PARAMETERS:           
+      RETURN:               
+###################################################################################*/
 void ui_free(struct ui *ui) {
   free(ui->prompt);
   for (int i = HISTORY_SIZE; i--;)
@@ -76,6 +101,11 @@ void ui_free(struct ui *ui) {
       free(ui->history[i]);
 }
 
+/*##################################################################################
+     PURPOSE: 
+  PARAMETERS:           
+      RETURN:               
+###################################################################################*/
 const char *ui_get_line(struct ui *ui, size_t *size) {
   const int i = ui->history_index & (HISTORY_SIZE - 1);
   ssize_t s;
@@ -91,6 +121,11 @@ const char *ui_get_line(struct ui *ui, size_t *size) {
   return ui->history[i];
 }
 
+/*##################################################################################
+     PURPOSE: 
+  PARAMETERS:           
+      RETURN:               
+###################################################################################*/
 void ui_history(const struct ui *ui) {
   for (int i = ui->history_index < HISTORY_SIZE
                    ? 0
