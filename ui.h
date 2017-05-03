@@ -14,3 +14,9 @@ void ui_free(struct ui *);
 
 const char *ui_get_line(struct ui *ui, size_t *size);
 void ui_history(const struct ui *ui);
+
+/*##################################################################################
+     PURPOSE: 
+  PARAMETERS:           
+      RETURN:               
+###################################################################################*/
