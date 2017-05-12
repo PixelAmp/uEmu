@@ -11,9 +11,7 @@ struct ui {
   // An array of strings of the commands inputted.
   char *history[HISTORY_SIZE];
 
-  // The sizes of the strings in the history.
-  // eg, history_size[n] == strlen(history[n])
-  // and if it doesn't, something is horribly wrong.
+  // The sizes of the buffers (not strings) in history.
   size_t history_size[HISTORY_SIZE];
 
   // The currently active index in the history.
@@ -37,11 +35,9 @@ void ui_free(struct ui *);
      PURPOSE: Displays prompt, reads a line of input, and returns the associated
               string. Will perform history lookups if the user does '!n'
   PARAMETERS: The user interface.
-  PARAMETERS: A pointer to a size_t, where the function should store the length
-              of the string that is returned. Must not be NULL.
       RETURN: A string of input.
 ###################################################################################*/
-const char *ui_get_line(struct ui *ui, size_t *size);
+const char *ui_get_line(struct ui *ui);
 
 /*##################################################################################
      PURPOSE: Print the history to the screen.

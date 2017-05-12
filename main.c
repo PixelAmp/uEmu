@@ -16,8 +16,7 @@ int main() {
   // Main loop.
   for (;;) {
     // Get a line of input from the user.
-    size_t size;
-    const char *line = ui_get_line(&ui, &size);
+    const char *line = ui_get_line(&ui);
 
     // Quit?
     if (strcmp(line, "quit\n") == 0 || strcmp(line, "exit\n") == 0)
