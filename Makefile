@@ -1,4 +1,4 @@
-CFLAGS += -march=native -pipe -MMD -Wall -Wextra -std=gnu99
+CFLAGS += -march=native -pipe -MMD -Wall -Wextra -std=gnu99 -D_GNU_SOURCE
 SRC := $(wildcard *.c)
 OBJ := $(SRC:.c=.o)
 
