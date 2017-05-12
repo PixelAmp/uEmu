@@ -1,12 +1,5 @@
-/*##################################################################################
-     PURPOSE: 
-  PARAMETERS:           
-      RETURN:               
-###################################################################################*/
-#define ARGPARSE_C
 #include "argparse.h"
 
-#include <stdio.h>
 #include <string.h>
 
 #define MAX_LINE 4096
