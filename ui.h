@@ -5,9 +5,18 @@
 
 // A manager to handle the user interface.
 struct ui {
+  // The prompt to display to the user.
   char *prompt;
+
+  // An array of strings of the commands inputted.
   char *history[HISTORY_SIZE];
+
+  // The sizes of the strings in the history.
+  // eg, history_size[n] == strlen(history[n])
+  // and if it doesn't, something is horribly wrong.
   size_t history_size[HISTORY_SIZE];
+
+  // The currently active index in the history.
   int history_index;
 };
 

@@ -6,9 +6,11 @@
 #include <string.h>
 
 /*##################################################################################
-     PURPOSE:
-  PARAMETERS:
-      RETURN:
+     PURPOSE: Replaces a command in the history with a different one.
+  PARAMETERS: ui: The user interface struct.
+  PARAMETERS: current: The index of the command to be replaced.
+  PARAMETERS: prev: The index of the command to replace current.
+  PARAMETERS: size: A pointer to the location to store the new length in.
 ###################################################################################*/
 static void history_update(struct ui *ui, const int current, const int prev,
                            size_t *size) {
@@ -24,9 +26,10 @@ static void history_update(struct ui *ui, const int current, const int prev,
 }
 
 /*##################################################################################
-     PURPOSE:
-  PARAMETERS:
-      RETURN:
+     PURPOSE: Replaces the current command with the most recent command.
+              Called when the user inputs '!!'.
+  PARAMETERS: ui: The user interface struct.
+  PARAMETERS: size: A pointer to the location to store the new length in.
 ###################################################################################*/
 static void ui_history_last(struct ui *ui, size_t *size) {
   if (ui->history_index == 0)
